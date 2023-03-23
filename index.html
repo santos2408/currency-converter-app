@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" shrink-to-fit="no">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link href="https://cdn.jsdelivr.net/npm/remixicon@2.5.0/fonts/remixicon.css" rel="stylesheet">
+  <link rel="stylesheet" href="./dist/style.min.css">
+  <title>Document</title>
+</head>
+<body>
+  <main class="main">
+    <div class="card">
+      <div class="card__header">
+        <h1 class="card__title">Currency Converter</h1>
+      </div>
+
+      <div class="card__content">
+        <form action="" class="card__content-form">
+          <label for="currency-amount" class="form__label">Enter amount</label>
+          <input id="currency-amount" class="form__input" type="text" value="" placeholder="10.00">
+        </form>
+
+        <div class="currency">
+          <div class="currency__content-current" data-js="currency-one">
+            <div class="currency__content-image">
+              <img
+                src="https://flagcdn.com/w80/br.png"
+                srcset="https://flagcdn.com/w160/br.png 2x"
+                width="50"
+                alt="Brazil">
+            </div>
+
+            <div class="currency-name">
+              <h2>BRL</h2>
+              <span>Real</span>
+            </div>
+
+            <div class="arrow-right">
+              <i class="ri-arrow-right-s-line"></i>
+            </div>
+          </div>
+
+          <ul class="currency__content-option" data-js="currency-one-options-container">
+            <li class="currency__content-item">
+              <div class="currency__content-image">
+                <img
+                  src="https://flagcdn.com/w80/ae.png"
+                  srcset="https://flagcdn.com/w160/ae.png 2x"
+                  width="50"
+                  alt="Brazil">
+              </div>
+  
+              <div class="currency-name">
+                <h2>AE</h2>
+                <span>United Arab Emirates</span>
+              </div>
+
+              <div class="arrow-right">
+                <i class="ri-arrow-right-s-line"></i>
+              </div>
+            </li>
+          </ul>
+        </div>
+
+        <div class="currency__operation">
+          <button class="currency__operation-button">
+            <i class="ri-arrow-up-down-line arrow-up-down"></i>
+            <span>Switch currencies</span>
+          </button>
+        </div>
+
+        <div class="currency">
+          <div class="currency__content-current" data-js="currency-two">
+            <div class="currency__content-image">
+              <img
+                src="https://flagcdn.com/w80/us.png"
+                srcset="https://flagcdn.com/w160/us.png 2x"
+                width="50"
+                alt="United States">
+            </div>
+            <div class="currency-name">
+              <h2>BRL</h2>
+              <span>Real</span>
+            </div>
+            <div class="arrow-right">
+              <i class="ri-arrow-right-s-line"></i>
+            </div>
+          </div>
+
+          <ul class="currency__content-option" data-js="currency-two-options-container">
+            <li class="currency__content-item">
+              <div class="currency__content-image">
+                <img
+                  src="https://flagcdn.com/w80/ae.png"
+                  srcset="https://flagcdn.com/w160/ae.png 2x"
+                  width="50"
+                  alt="Brazil">
+              </div>
+  
+              <div class="currency-name">
+                <h2>AE</h2>
+                <span>United Arab Emirates</span>
+              </div>
+
+              <div class="arrow-right">
+                <i class="ri-arrow-right-s-line"></i>
+              </div>
+            </li>
+          </ul>
+        </div>
+      </div>      
+    </div>
+  </main>
+
+  <script src="./app/js/app.js"></script>
+</body>
+</html>

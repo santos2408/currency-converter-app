@@ -1,0 +1,24 @@
+:root {
+  --first-color: hsl(233, 50%, 55%);
+  --first-color-alt: hsl(233, 50%, 55%, 80%);
+  --first-color-light: hsl(233, 50%, 55%, 30%);
+  --first-color-dark: hsl(233, 50%, 55%);
+  --gradient-color: linear-gradient(230deg, #5C6CFA 5.8%, #99A1E6 90%);
+  --white-color: hsl(230, 70%, 90%);
+  --white-color-alt: hsl(210, 20%, 96%);
+
+  --background-color: hsl(234, 92%, 66%);
+  --background-color-alt: hsl(232, 19%, 16%);
+  --background-color-gradient: linear-gradient(0deg, rgba(89,105,248,1) 65%, rgba(33,35,48,1) 35%);
+
+  --body-font: 'Inter', sans-serif;
+  --hight-font-size: 1.8rem;
+  --medium-font-size: 1.6rem;
+  --normal-font-size: 1.4rem;
+  --small-font-size: 1.2rem;
+
+  --font-normal: 400;
+  --font-medium: 500;
+  --font-semibold: 600;
+  --font-bold: 700;
+}
