@@ -1,0 +1,7 @@
+$breakpoints-down: ("smaller": 280px, "small": 360px, "medium": 375px);
+
+@mixin breakpoint-down($size) {
+  @media screen and (max-width: map-get($breakpoints-down, $size)) {
+    @content;
+  }
+}

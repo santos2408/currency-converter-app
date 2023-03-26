@@ -1,3 +1,5 @@
+@use '../config/' as config;
+
 .card {
   width: 360px;
   position: relative;
@@ -6,6 +8,15 @@
   border-radius: 1rem;
   background: linear-gradient(20deg, #E9E7FD 0%, #F3F5F7 100%);;
   padding: 4rem 2.5rem;
+
+  @include config.breakpoint-down(medium) {
+    width: 340px;
+    padding: 2rem;
+  }
+
+  @include config.breakpoint-down(smaller) {
+    width: 250px;
+  }
 }
 
 .card__header {

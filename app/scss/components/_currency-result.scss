@@ -1,5 +1,11 @@
+@use '../config/' as config;
+
 .currency__result {
   margin: 2rem 0;
+
+  @include config.breakpoint-down(medium) {
+    margin: 1rem 0;      
+  }
 
   h1, p {
     text-align: center;

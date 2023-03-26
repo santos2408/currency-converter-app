@@ -1,3 +1,5 @@
+@use '../config/' as config;
+
 .main {
   width: 100%;
   height: 100%;
@@ -18,6 +20,10 @@
   color: var(--white-color);
   cursor: pointer;
   transition: 0.3s;
+
+  @include config.breakpoint-down(medium) {
+    padding: 1.5rem 6rem;
+  }
 
   &:hover {
     background-color: hsl(233, 50%, 55%, 75%);

@@ -1,3 +1,5 @@
+@use '../config/' as config;
+
 .card__content {
   display: grid;
   gap: 2rem;
@@ -79,6 +81,10 @@
       &.show-options {
         height: 25rem;
         visibility: visible;
+
+        @include config.breakpoint-down(medium) {
+          height: 20rem;
+        }
       }
 
       .currency__content-item {
