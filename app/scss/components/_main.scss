@@ -6,3 +6,20 @@
   align-items: center;
   justify-content: center;
 }
+
+.submit-button {
+  padding: 1.5rem 8rem;
+  font-size: var(--medium-font-size);
+  font-weight: var(--font-semibold);
+  font-family: var(--body-font);
+  border-radius: 0.5rem;
+  border: none;
+  background-color: var(--first-color-alt);
+  color: var(--white-color);
+  cursor: pointer;
+  transition: 0.3s;
+
+  &:hover {
+    background-color: hsl(233, 50%, 55%, 75%);
+  }
+}

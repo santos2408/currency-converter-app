@@ -1,0 +1,19 @@
+.currency__result {
+  margin: 2rem 0;
+
+  h1, p {
+    text-align: center;
+    font-weight: var(--font-medium);
+    color: var(--first-color);
+  }
+
+  h1 {
+    font-size: var(--bigger-font-size);
+    margin-bottom: 1rem;
+  }
+
+  p {
+    font-size: var(--normal-font-size);
+    color: var(--first-color-alt);
+  }
+}
