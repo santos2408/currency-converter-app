@@ -1,1 +1,1 @@
-- [ ] - 
+- [ ] - adicionar uma função IEE com 'state' da requisição das moedas

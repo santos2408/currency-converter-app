@@ -36,8 +36,6 @@ const generateOptions = async () => {
     currencyOneOptionsContainer.innerHTML = formattedOptions
 }
 
-generateOptions()
-
 const closeCurrencyContainer = () => {
     currencyOneOptionsContainer.classList.remove('show-options')
     currencyTwoOptionsContainer.classList.remove('show-options')
@@ -59,12 +57,52 @@ const handleCurrencyContainerVisibility = event => {
     currencyOneOptionsContainer.classList.remove('show-options')
 }
 
-currencyOneOptionsContainer.addEventListener('click', event => {
+const loadCurrentCurrencyOne = async () => {
+    const currencyImageContainer = document.querySelector('[data-js="currency-content-image"]')
+    const currencyNameContainer = document.querySelector('[data-js="currency-name"]')
+    const currencyIconContainer = document.querySelector('[data-js="currency-icon"]')
+
+    const { base_code} = await getExchangeRate()
+    const countries = await getCountries()
+
+    const { _, countryName } = countries.find(country => country.code === base_code)
+    const flagCode = base_code.slice(0, 2).toLowerCase()
+
+    const img = document.createElement('img')
+    const h2 = document.createElement('h2')
+    const span = document.createElement('span')
+    const icon = document.createElement('i')
+
+    img.setAttribute('src', `https://flagcdn.com/w80/${flagCode}.png`)
+    img.setAttribute('srcset', `https://flagcdn.com/w160/${flagCode}.png 2x`)
+    img.setAttribute('width', '50')
+
+    h2.textContent = `${base_code}`
+    span.textContent = `${countryName}`
+    
+    icon.classList.add('ri-arrow-right-s-line')
+
+    currencyImageContainer.append(img)
+    currencyNameContainer.append(h2, span)
+    currencyIconContainer.append(icon)
+}
+
+loadCurrentCurrencyOne()
+generateOptions()
+
+currencyOneOptionsContainer.addEventListener('click', async event => {
     event.stopPropagation()
 
-    const selectedCurrency = event.target.closest('.currency__content-item')
+    const selectedCurrencyElement = event.target.closest('.currency__content-item')
+    const selectedCurrency = 
+
+    console.log(selectedCurrencyElement)
+
+    return
+
+    const { conversion_rates } = await getExchangeRate(selectedCurrencyElement)
     
-    if (selectedCurrency) {
+    if (selectedCurrencyElement) {
         currencyOneOptionsContainer.classList.remove('show-options')
     }
 })
