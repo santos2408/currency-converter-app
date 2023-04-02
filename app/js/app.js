@@ -4,7 +4,7 @@ const currencyOneOptionsContainer = document.querySelector('[data-js="currency-o
 const currencyTwoOptionsContainer = document.querySelector('[data-js="currency-two-options-container"]')
 
 const generateOptions = async () => {
-    const { conversion_rates } = await getExchangeRate()
+    const { conversion_rates } = state.getExchangeRate()
     const countries = await getCountries()
 
     const options = Object.keys(conversion_rates).map(currency => {
@@ -20,12 +20,12 @@ const generateOptions = async () => {
                 />
             </div>
 
-            <div class="currency-name">
+            <div class="currency-name" data-js="currency-name">
                 <h2>${currency}</h2>
                 <span>${countryName}</span>
             </div>
 
-            <div class="arrow-right">
+            <div class="arrow-right" data-js="currency-icon">
                 <i class="ri-arrow-right-s-line"></i>
             </div>
         </li>`
@@ -34,6 +34,7 @@ const generateOptions = async () => {
     const formattedOptions = options.join().replaceAll(',', '')
 
     currencyOneOptionsContainer.innerHTML = formattedOptions
+    currencyTwoOptionsContainer.innerHTML = formattedOptions
 }
 
 const closeCurrencyContainer = () => {
@@ -57,64 +58,103 @@ const handleCurrencyContainerVisibility = event => {
     currencyOneOptionsContainer.classList.remove('show-options')
 }
 
-const loadCurrentCurrencyOne = async () => {
-    const currencyImageContainer = document.querySelector('[data-js="currency-content-image"]')
-    const currencyNameContainer = document.querySelector('[data-js="currency-name"]')
-    const currencyIconContainer = document.querySelector('[data-js="currency-icon"]')
+const initCurrencies = async selectedCurrency => {
+    const currencyImages = document.querySelectorAll('[data-js="currency-content-image"] img')
+    const currencyNames = document.querySelectorAll('[data-js="currency-name"] h2')
+    const currencyCountries = document.querySelectorAll('[data-js="currency-name"] span')
 
-    const { base_code} = await getExchangeRate()
+    const { base_code } = await fetchExchangeRate(selectedCurrency)
     const countries = await getCountries()
 
     const { _, countryName } = countries.find(country => country.code === base_code)
     const flagCode = base_code.slice(0, 2).toLowerCase()
 
-    const img = document.createElement('img')
-    const h2 = document.createElement('h2')
-    const span = document.createElement('span')
-    const icon = document.createElement('i')
+    currencyImages.forEach(currencyImage => {
+        currencyImage.setAttribute('src', `https://flagcdn.com/w80/${flagCode}.png`)
+        currencyImage.setAttribute('srcset', `https://flagcdn.com/w160/${flagCode}.png 2x`)
+        currencyImage.setAttribute('width', '50')
+    })
 
-    img.setAttribute('src', `https://flagcdn.com/w80/${flagCode}.png`)
-    img.setAttribute('srcset', `https://flagcdn.com/w160/${flagCode}.png 2x`)
-    img.setAttribute('width', '50')
+    currencyNames.forEach(currencyName => currencyName.textContent = `${base_code}`)
+    currencyCountries.forEach(currencyCountry => currencyCountry.textContent = `${countryName}`)
 
-    h2.textContent = `${base_code}`
-    span.textContent = `${countryName}`
-    
-    icon.classList.add('ri-arrow-right-s-line')
-
-    currencyImageContainer.append(img)
-    currencyNameContainer.append(h2, span)
-    currencyIconContainer.append(icon)
+    generateOptions('USD')
 }
 
-loadCurrentCurrencyOne()
-generateOptions()
+const changeSelectedBaseCurrency = async selectedCurrency => {
+    const currencyImage = currencyOneContainer.querySelector('[data-js="currency-content-image"] img')
+    const currencyName = currencyOneContainer.querySelector('[data-js="currency-name"] h2')
+    const currencyCountry = currencyOneContainer.querySelector('[data-js="currency-name"] span')
+
+    const { base_code } = await fetchExchangeRate(selectedCurrency)
+    const countries = await getCountries()
+
+    const { _, countryName } = countries.find(country => country.code === base_code)
+    const flagCode = base_code.slice(0, 2).toLowerCase()
+
+    currencyImage.setAttribute('src', `https://flagcdn.com/w80/${flagCode}.png`)
+    currencyImage.setAttribute('srcset', `https://flagcdn.com/w160/${flagCode}.png 2x`)
+    currencyImage.setAttribute('width', '50')
+
+    currencyName.textContent = `${base_code}`
+    currencyCountry.textContent = `${countryName}`
+}
+
+const changeSelectedSecondCurrency = async selectedCurrency => {
+    const currencyImage = currencyTwoContainer.querySelector('[data-js="currency-content-image"] img')
+    const currencyName = currencyTwoContainer.querySelector('[data-js="currency-name"] h2')
+    const currencyCountry = currencyTwoContainer.querySelector('[data-js="currency-name"] span')
+
+    const { conversion_rates } = state.getExchangeRate()
+    const countries = await getCountries()
+
+    const { code, countryName } = countries.find(country => country.code === selectedCurrency)
+    const flagCode = code.slice(0, 2).toLowerCase()
+    
+    // console.log(flagCode, countryName)
+    // return
+    currencyImage.setAttribute('src', `https://flagcdn.com/w80/${flagCode}.png`)
+    currencyImage.setAttribute('srcset', `https://flagcdn.com/w160/${flagCode}.png 2x`)
+    currencyImage.setAttribute('width', '50')
+
+    currencyName.textContent = `${code}`
+    currencyCountry.textContent = `${countryName}`
+}
+
+initCurrencies('USD')
 
 currencyOneOptionsContainer.addEventListener('click', async event => {
     event.stopPropagation()
 
-    const selectedCurrencyElement = event.target.closest('.currency__content-item')
-    const selectedCurrency = 
+    const selectedCurrencyItem = event.target.closest('.currency__content-item')
 
-    console.log(selectedCurrencyElement)
-
-    return
-
-    const { conversion_rates } = await getExchangeRate(selectedCurrencyElement)
-    
-    if (selectedCurrencyElement) {
-        currencyOneOptionsContainer.classList.remove('show-options')
+    if (!selectedCurrencyItem) {
+        return
     }
+
+    currencyOneOptionsContainer.classList.remove('show-options')
+
+    const selectedCurrencyElement = selectedCurrencyItem.querySelector('[data-js="currency-name"] h2')
+    const selectedCurrency = selectedCurrencyElement.textContent
+
+    changeSelectedBaseCurrency(selectedCurrency)
 })
 
 currencyTwoOptionsContainer.addEventListener('click', event => {
     event.stopPropagation()
 
-    const selectedCurrency = event.target.closest('.currency__content-item')
-    
-    if (selectedCurrency) {
-        currencyTwoOptionsContainer.classList.remove('show-options')
+    const selectedCurrencyItem = event.target.closest('.currency__content-item')
+
+    if (!selectedCurrencyItem) {
+        return
     }
+
+    currencyTwoOptionsContainer.classList.remove('show-options')
+
+    const selectedCurrencyElement = selectedCurrencyItem.querySelector('[data-js="currency-name"] h2')
+    const selectedCurrency = selectedCurrencyElement.textContent
+
+    changeSelectedSecondCurrency(selectedCurrency)
 })
 
 document.addEventListener('click', closeCurrencyContainer)

@@ -1,1 +1,2 @@
-- [ ] - adicionar uma função IEE com 'state' da requisição das moedas
+- [X] - selecionar a moeda no container principal ao clicar em alguma da lista
+- [X] - adicionar uma função IEE com 'state' da requisição das moedas
