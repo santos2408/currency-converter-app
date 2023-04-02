@@ -121,9 +121,7 @@ const changeSelectedSecondCurrency = async selectedCurrency => {
     currencyCountry.textContent = `${countryName}`
 }
 
-initCurrencies('USD')
-
-currencyOneOptionsContainer.addEventListener('click', async event => {
+const handleCurrencyOneOptions = async event => {
     event.stopPropagation()
 
     const selectedCurrencyItem = event.target.closest('.currency__content-item')
@@ -138,9 +136,9 @@ currencyOneOptionsContainer.addEventListener('click', async event => {
     const selectedCurrency = selectedCurrencyElement.textContent
 
     changeSelectedBaseCurrency(selectedCurrency)
-})
+}
 
-currencyTwoOptionsContainer.addEventListener('click', event => {
+const handleCurrencyTwoOptions = event => {
     event.stopPropagation()
 
     const selectedCurrencyItem = event.target.closest('.currency__content-item')
@@ -155,8 +153,12 @@ currencyTwoOptionsContainer.addEventListener('click', event => {
     const selectedCurrency = selectedCurrencyElement.textContent
 
     changeSelectedSecondCurrency(selectedCurrency)
-})
+}
+
+initCurrencies('USD')
 
 document.addEventListener('click', closeCurrencyContainer)
 currencyOneContainer.addEventListener('click', handleCurrencyContainerVisibility)
 currencyTwoContainer.addEventListener('click', handleCurrencyContainerVisibility)
+currencyOneOptionsContainer.addEventListener('click', handleCurrencyOneOptions)
+currencyTwoOptionsContainer.addEventListener('click', handleCurrencyTwoOptions)
