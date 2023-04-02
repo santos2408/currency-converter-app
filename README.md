@@ -33,7 +33,7 @@ Esse projeto está sendo desenvolvido com as seguintes tecnologias:
 ## 🚧 Projeto:
 
 Link do Projeto: em breve
-<!-- [Construction - Real State](https://construction-real-state-rogersanttoss.netlify.app) -->
+[Currency Converter - App](https://currency-converter-app-iota.vercel.app/)
 
 <!-- <p>:heavy_check_mark: Mobile</p>
 <p>:construction: Desktop</p> -->

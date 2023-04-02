@@ -66,7 +66,6 @@ const showCurrentConverter = () => {
     const currencyTwoName = currencyTwoContainer.querySelector('[data-js="currency-name"] h2')
 
     const { base_code, conversion_rates } = state.getExchangeRate()
-
     const currencyValueToBeConverted = conversion_rates[currencyTwoName.textContent]
     const convertedValue = Number(currencyAmount.value * currencyValueToBeConverted)
 
