@@ -1,2 +1,6 @@
 - [X] - selecionar a moeda no container principal ao clicar em alguma da lista
 - [X] - adicionar uma função IEE com 'state' da requisição das moedas
+- [ ] - inserir um evento ao apertar a tecla ENTER para efetuar a conversão
+- [ ] - adicionar funcionalidade de trocar a posição das moedas
+- [ ] - salvar as informações da últimas moedas usadas no localStorage
+- [ ] - aplicar regex's no input de valor da moeda

@@ -2,6 +2,7 @@
 
 .currency__result {
   margin: 2rem 0;
+  height: 6.6rem;
 
   @include config.breakpoint-down(medium) {
     margin: 1rem 0;      

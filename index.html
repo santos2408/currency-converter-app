@@ -9,7 +9,7 @@
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
   <link href="https://cdn.jsdelivr.net/npm/remixicon@2.5.0/fonts/remixicon.css" rel="stylesheet">
   <link rel="stylesheet" href="./dist/style.min.css">
-  <title>Document</title>
+  <title>Currency Converter</title>
 </head>
 <body>
   <main class="main">
@@ -19,10 +19,10 @@
       </div>
 
       <div class="card__content">
-        <form action="" class="card__content-form">
+        <div class="card__content-form">
           <label for="currency-amount" class="form__label">Enter amount</label>
-          <input id="currency-amount" class="form__input" type="text" value="" placeholder="10.00">
-        </form>
+          <input class="form__input" id="currency-amount" data-js="currency-amount" type="text" value="10" placeholder="10.00">
+        </div>
 
         <div class="currency">
           <div class="currency__content-current" data-js="currency-one">
@@ -92,12 +92,12 @@
           </ul>
         </div>
 
-        <div class="currency__result">
-          <h1>R$ 50.00</h1>
-          <p>1,000 USD = 73,704.26 INR</p>
+        <div class="currency__result" data-js="currency-result">
+          <h1></h1>
+          <p></p>
         </div>
 
-        <button type="button" class="submit-button">Get Exchange Rate</button>
+        <button type="button" class="submit-button" data-js="exchange-button">Get Exchange Rate</button>
       </div>      
     </div>
   </main>
