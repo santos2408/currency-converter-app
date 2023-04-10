@@ -5,6 +5,7 @@ const initApplication = () => {
     const currencyTwoOptionsContainer = document.querySelector('[data-js="currency-two-options-container"]')
     const exchangeRateButton = document.querySelector('[data-js="exchange-button"]')
     const switchCurrenciesButton = document.querySelector('[data-js="switch-currencies-button"]')
+    const loadingPlaceholder = document.querySelector('[data-js="loading-placeholder"]')
     
     const closeCurrencyContainer = () => {
         currencyOneOptionsContainer.classList.remove('show-options')
@@ -29,6 +30,8 @@ const initApplication = () => {
         const currencyImage = currencyOneContainer.querySelector('[data-js="currency-content-image"] img')
         const currencyName = currencyOneContainer.querySelector('[data-js="currency-name"] h2')
         const currencyCountry = currencyOneContainer.querySelector('[data-js="currency-name"] span')
+        
+        loadingPlaceholder.classList.add('show-placeholder')
     
         const { base_code } = await fetchExchangeRate(selectedCurrency)
         const countries = await getCountries()
@@ -42,6 +45,8 @@ const initApplication = () => {
     
         currencyName.textContent = `${base_code}`
         currencyCountry.textContent = `${countryName}`
+
+        loadingPlaceholder.classList.remove('show-placeholder')
     }
     
     const changeSelectedSecondCurrency = async selectedCurrency => {
@@ -157,6 +162,8 @@ const initApplication = () => {
         const currencyImages = document.querySelectorAll('[data-js="currency-content-image"] img')
         const currencyNames = document.querySelectorAll('[data-js="currency-name"] h2')
         const currencyCountries = document.querySelectorAll('[data-js="currency-name"] span')
+
+        loadingPlaceholder.classList.add('show-placeholder')
     
         const { base_code } = await fetchExchangeRate(selectedCurrency)
         const countries = await getCountries()
@@ -174,6 +181,8 @@ const initApplication = () => {
         currencyCountries.forEach(currencyCountry => currencyCountry.textContent = `${countryName}`)
     
         generateOptions('USD')
+
+        loadingPlaceholder.classList.remove('show-placeholder')
     }
     
     loadCurrencies('USD')
