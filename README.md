@@ -3,12 +3,12 @@
 </h1>
 
 <p align="center">
-  <img alt="" src="./app/img/preview.jpg" width="100%">
+  <img alt="" src="./app/img/preview.gif" width="100%">
 </p>
 
 <p align="center">
   <a href="#-tecnologias">Tecnologias</a>&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;
-  <a href="#-projeto">Projeto</a>&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;
+  <a href="https://currency-converter-app-uzvc.vercel.app/">Projeto</a>&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;
   <a href="#memo-licença">Licença</a>
 </p>
 
